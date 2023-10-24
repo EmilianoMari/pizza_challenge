@@ -32,8 +32,12 @@ def book_pizza(tool_input, cat):
         print(e)
         return "Perdonami ma non ho capito, puoi ripetere?"
         
+    extra_error_message = ""
     for key in dict_tool_input:
-        if dict_tool_input[key].lower() in cat.working_memory["recall_query"].lower():
+        if cat.working_memory["recall_query"].lower() is not None and dict_tool_input[key].lower() in cat.working_memory["recall_query"].lower():
+            if key == "pizza_type" and dict_tool_input[key].lower() not in ["margherita", "boscaiola", "capricciosa"]:
+                extra_error_message = "Il tipo di pizza che hai chiesto non è disponibile"
+                continue
             p.add_property(key, dict_tool_input[key])
 
     print("*" * 60)
@@ -42,8 +46,8 @@ def book_pizza(tool_input, cat):
 
     missing_info = p.check_values()
     if len(missing_info) > 0:
-        return "Mancano queste informazioni: %s chiedile al cliente nei prossimi messaggi" % missing_info
-    return "Pizza ordinata!, ecco il resoconto dell'ordine: %s" % p.get_dict()
+        return "Mancano queste informazioni: %s chiedile al cliente nei prossimi messaggi. %s" % (missing_info, extra_error_message)
+    return "Ordine ricevuto!, ecco il resoconto: %s" % p.get_dict()
 
 
 ''' 

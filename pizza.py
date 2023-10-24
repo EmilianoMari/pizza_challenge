@@ -3,7 +3,7 @@ import uuid
 
 def gen_piazza_dict():
     return {
-        "id": uuid.uuid1(),
+        "id": uuid.uuid4(),
         "pizza_type": "",
         "address": "",
         "floor": "",

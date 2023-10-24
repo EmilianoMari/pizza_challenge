@@ -1,9 +1,9 @@
 {
     "name": "Fr3izza (Pizza Challenge)",
-    "description": "Pizza Challenge by PieroIT",
-    "version": "0.0.1",
+    "description": "Pizza Challenge",
+    "version": "0.1.0",
     "author_name": "Emiliano Mari",
     "author_url": "https://sydus.it",
-    "plugin_url": "",
+    "plugin_url": "https://github.com/EmilianoMari/pizza_challenge",
     "tags": "pizza, challenge, llm"
 }
